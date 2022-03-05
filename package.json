@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/luizhennri/Projeto_BackEnd/issues"
   },
-  "homepage": "https://github.com/luizhennri/Projeto_BackEnd#readme"
+  "homepage": "https://github.com/luizhennri/Projeto_BackEnd#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
 }
