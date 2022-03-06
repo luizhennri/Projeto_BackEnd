@@ -28,7 +28,7 @@ app.post('/listFoods', function (req, res) {
 
     foods.push(item);
 
-    res.send("Item adicionado na lista!");
+    res.send(`Item adicionado na lista!\nItem: ${item}`);
 });
 
 app.put('/listFoods/:id', function (req, res) {
@@ -38,7 +38,7 @@ app.put('/listFoods/:id', function (req, res) {
 
     foods[id] = newItem;
 
-    res.send("Item atualizado na lista!");
+    res.send(`Item atualizado na lista!\nItem: ${newItem}`);
 });
 
 app.delete('/listFoods/:id', function (req, res) {
