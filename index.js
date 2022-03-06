@@ -31,6 +31,24 @@ app.post('/listFoods', function (req, res) {
     res.send("Item adicionado na lista!");
 });
 
+app.put('/listFoods/:id', function (req, res) {
+    const id = req.params.id - 1;
+
+    const newItem = req.body.nome;
+
+    foods[id] = newItem;
+
+    res.send("Item atualizado na lista!");
+});
+
+app.delete('/listFoods/:id', function (req, res) {
+    const id = req.params.id - 1;
+
+    delete foods[id];
+
+    res.send("Item deletado da lista!");
+});
+
 app.listen(port, function () {
     console.info(`App rodando em http://localhost:${port}`);
 });
