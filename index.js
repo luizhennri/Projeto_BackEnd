@@ -1,54 +1,74 @@
 const express = require('express');
-const app = express();
+const { MongoClient, ObjectId } = require('mongodb');
 
-app.use(express.json());
+const url = "mongodb://localhost:27017";
+const dbName = "Projeto_BackEnd";
 
-const port = 3000;
+async function main() {
+    console.log("Conectando ao banco de dados...");
 
-const foods = ["Banana", "Brigadeiro", "Pizza", "Laranja"];
+    const client = await MongoClient.connect(url);
 
-app.get('/', function (req, res) {
-    res.send('Rota Principal');
-});
+    const db = client.db(dbName);
 
-app.get('/listFoods', function (req, res) {
-    res.send(foods.filter(Boolean));
-});
+    const collection = db.collection("foods");
 
-app.get('/listFoods/:id', function (req, res) {
-    const id = req.params.id - 1;
+    console.log("Conexão realizada com sucesso!");
 
-    const item = foods[id];
+    const app = express();
 
-    res.send(item);
-});
+    app.use(express.json());
 
-app.post('/listFoods', function (req, res) {
-    const item = req.body.nome;
+    const port = 3000;
 
-    foods.push(item);
+    const foods = ["Banana", "Brigadeiro", "Pizza", "Laranja"];
 
-    res.send(`Item adicionado na lista!\nItem: ${item}`);
-});
+    app.get('/', function (req, res) {
+        res.send('Rota Principal');
+    });
 
-app.put('/listFoods/:id', function (req, res) {
-    const id = req.params.id - 1;
+    app.get('/listFoods', function (req, res) {
+        res.send(foods.filter(Boolean));
+    });
 
-    const newItem = req.body.nome;
+    app.get('/listFoods/:id', function (req, res) {
+        const id = req.params.id - 1;
 
-    foods[id] = newItem;
+        const item = foods[id];
 
-    res.send(`Item atualizado na lista!\nItem: ${newItem}`);
-});
+        res.send(item);
+    });
 
-app.delete('/listFoods/:id', function (req, res) {
-    const id = req.params.id - 1;
+    app.post('/listFoods', function (req, res) {
+        const item = req.body.nome;
 
-    delete foods[id];
+        foods.push(item);
 
-    res.send("Item deletado da lista!");
-});
+        res.send(`Item adicionado na lista!\nItem: ${item}`);
+    });
 
-app.listen(port, function () {
-    console.info(`App rodando em http://localhost:${port}`);
-});
+    app.put('/listFoods/:id', function (req, res) {
+        const id = req.params.id - 1;
+
+        const newItem = req.body.nome;
+
+        foods[id] = newItem;
+
+        res.send(`Item atualizado na lista!\nItem: ${newItem}`);
+    });
+
+    app.delete('/listFoods/:id', function (req, res) {
+        const id = req.params.id - 1;
+
+        delete foods[id];
+
+        res.send("Item deletado da lista!");
+    });
+
+    app.listen(port, function () {
+        console.info(`App rodando em http://localhost:${port}`);
+    });
+
+};
+
+main();
