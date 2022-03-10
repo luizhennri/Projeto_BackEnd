@@ -16,3 +16,4 @@ Data: 2022.1
 - https://youtu.be/QMjZyQZMOSY (Créditos: Paulo Salvatore)
 - https://nodejs.org/en/
 - https://www.mongodb.com/
+- https://expressjs.com/pt-br/guide/routing.html
