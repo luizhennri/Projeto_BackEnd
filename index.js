@@ -27,14 +27,16 @@ async function main() {
         res.send('Rota Principal');
     });
 
-    app.get('/listFoods', function (req, res) {
-        res.send(foods.filter(Boolean));
+    app.get('/listFoods', async function (req, res) {
+        const documentos = await collection.find().toArray();
+
+        res.send(documentos);
     });
 
-    app.get('/listFoods/:id', function (req, res) {
-        const id = req.params.id - 1;
+    app.get('/listFoods/:id', async function (req, res) {
+        const id = req.params.id;
 
-        const item = foods[id];
+        const item = await collection.findOne({ _id: new ObjectId(id) });
 
         res.send(item);
     });
