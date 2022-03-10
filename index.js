@@ -64,10 +64,10 @@ async function main() {
         res.send(`Item atualizado na lista!\nItem: ${newItem.nome}`);
     });
 
-    app.delete('/listFoods/:id', function (req, res) {
-        const id = req.params.id - 1;
+    app.delete('/listFoods/:id', async function (req, res) {
+        const id = req.params.id;
 
-        delete foods[id];
+        await collection.deleteOne({ _id: ObjectId(id) });
 
         res.send("Item deletado da lista!");
     });
