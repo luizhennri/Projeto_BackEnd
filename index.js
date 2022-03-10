@@ -41,12 +41,12 @@ async function main() {
         res.send(item);
     });
 
-    app.post('/listFoods', function (req, res) {
-        const item = req.body.nome;
+    app.post('/listFoods', async function (req, res) {
+        const item = req.body;
 
-        foods.push(item);
+        await collection.insertOne(item);
 
-        res.send(`Item adicionado na lista!\nItem: ${item}`);
+        res.send(`Item adicionado na lista!\nItem: ${item.nome}\nId: ${item._id}`);
     });
 
     app.put('/listFoods/:id', function (req, res) {
