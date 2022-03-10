@@ -49,14 +49,19 @@ async function main() {
         res.send(`Item adicionado na lista!\nItem: ${item.nome}\nId: ${item._id}`);
     });
 
-    app.put('/listFoods/:id', function (req, res) {
-        const id = req.params.id - 1;
+    app.put('/listFoods/:id', async function (req, res) {
+        const id = req.params.id;
 
-        const newItem = req.body.nome;
+        const newItem = req.body;
 
-        foods[id] = newItem;
+        await collection.updateOne(
+            { _id: ObjectId(id) },
+            {
+                $set: newItem
+            }
+        );
 
-        res.send(`Item atualizado na lista!\nItem: ${newItem}`);
+        res.send(`Item atualizado na lista!\nItem: ${newItem.nome}`);
     });
 
     app.delete('/listFoods/:id', function (req, res) {
