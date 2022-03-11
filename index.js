@@ -72,14 +72,9 @@ async function main() {
         res.send("Item deletado da lista!");
     });
 
-    // app.listen(port, function () {
-    //     console.info(`App rodando em http://localhost:${port}`);
-    // });
-
     app.listen(process.env.PORT || 3000, function () {
-        console.info(`App rodando em ${process.env.PORT || 3000}`);
+        console.info(`App rodando na porta: ${process.env.PORT || 3000}`);
     });
-
 
 };
 
