@@ -16,3 +16,4 @@ Data: 2022.1
 - https://nodejs.org/en/
 - https://www.mongodb.com/
 - https://expressjs.com/pt-br/guide/routing.html
+- https://devcenter.heroku.com/
