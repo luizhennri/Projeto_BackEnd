@@ -7,11 +7,11 @@ const dbName = "Projeto_BackEnd";
 async function main() {
     console.log("Conectando ao banco de dados...");
 
-    const client = await MongoClient.connect(url);
+    // const client = await MongoClient.connect(url);
 
-    const db = client.db(dbName);
+    // const db = client.db(dbName);
 
-    const collection = db.collection("foods");
+    // const collection = db.collection("foods");
 
     console.log("Conexão realizada com sucesso!");
 
@@ -72,9 +72,14 @@ async function main() {
         res.send("Item deletado da lista!");
     });
 
-    app.listen(port, function () {
-        console.info(`App rodando em http://localhost:${port}`);
+    // app.listen(port, function () {
+    //     console.info(`App rodando em http://localhost:${port}`);
+    // });
+
+    app.listen(process.env.PORT || 3000, function () {
+        console.info(`App rodando em ${process.env.PORT || 3000}`);
     });
+
 
 };
 
