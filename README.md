@@ -12,8 +12,7 @@ Data: 2022.1
 
 **Materiais de referência:**
 - https://miro.com/app/board/uXjVOIIRD70=/ (Créditos: Paulo Salvatore)
-- https://www.youtube.com/watch?v=F81k9w8gDJs (Créditos: Paulo Salvatore)
-- https://youtu.be/QMjZyQZMOSY (Créditos: Paulo Salvatore)
+- https://youtube.com/playlist?list=PLzFYWfRVHp5Jx-iNLxhUydXwnYPqmV2MU (Créditos: Paulo Salvatore)
 - https://nodejs.org/en/
 - https://www.mongodb.com/
 - https://expressjs.com/pt-br/guide/routing.html
