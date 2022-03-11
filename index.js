@@ -1,17 +1,17 @@
 const express = require('express');
 const { MongoClient, ObjectId } = require('mongodb');
 
-const url = "mongodb://localhost:27017";
-const dbName = "Projeto_BackEnd";
+const url = "mongodb+srv://admin:Q4orp89Hk275GXjE@cluster0.pnffj.mongodb.net";
+const dbName = "Projeto_BackEnd_Nuvem";
 
 async function main() {
-    console.log("Conectando ao banco de dados...");
+    console.log("Conectando ao banco de dados MongoDB...");
 
-    // const client = await MongoClient.connect(url);
+    const client = await MongoClient.connect(url);
 
-    // const db = client.db(dbName);
+    const db = client.db(dbName);
 
-    // const collection = db.collection("foods");
+    const collection = db.collection("foods");
 
     console.log("Conexão realizada com sucesso!");
 
