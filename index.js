@@ -1,8 +1,14 @@
+require("dotenv").config();
+
 const express = require('express');
 const { MongoClient, ObjectId } = require('mongodb');
 
-const url = "mongodb+srv://admin:Q4orp89Hk275GXjE@cluster0.pnffj.mongodb.net";
-const dbName = "Projeto_BackEnd_Nuvem";
+const dbUser = process.env.DB_USER;
+const dbPassword = process.env.DB_PASSWORD;
+const dbName = process.env.DB_NAME;
+const dbPort = process.env.DB_PORT;
+
+const url = `mongodb+srv://${dbUser}:${dbPassword}@cluster0.pnffj.mongodb.net`;
 
 async function main() {
     console.log("Conectando ao banco de dados MongoDB...");
@@ -18,10 +24,6 @@ async function main() {
     const app = express();
 
     app.use(express.json());
-
-    const port = 3000;
-
-    const foods = ["Banana", "Brigadeiro", "Pizza", "Laranja"];
 
     app.get('/', function (req, res) {
         res.send('Rota Principal');
@@ -72,8 +74,8 @@ async function main() {
         res.send("Item deletado da lista!");
     });
 
-    app.listen(process.env.PORT || 3000, function () {
-        console.info(`App rodando na porta: ${process.env.PORT || 3000}`);
+    app.listen(process.env.PORT || dbPort, function () {
+        console.info("Rodando aplicação...");
     });
 
 };
