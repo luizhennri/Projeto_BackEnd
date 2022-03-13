@@ -76,6 +76,7 @@ async function main() {
 
     app.listen(process.env.PORT || dbPort, function () {
         console.info("Rodando aplicação...");
+        console.info(process.env.HOST);
     });
 
 };
